@@ -1,5 +1,5 @@
 # pushover-logger
-Uses [pushover](https://pushover.com) to log errors directly to your phone (or any other connected device) as notifications.
+Uses [pushover](https://pushover.net) to log errors directly to your phone (or any other connected device) as notifications.
 
 ## Setup
 Needs the following environment variables:
