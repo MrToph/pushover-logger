@@ -66,9 +66,7 @@ class PushoverLogger {
       res.on(`data`, function(chunk) {
         result += chunk
       })
-      res.on(`end`, function() {
-        console.log(result)
-      })
+      res.on(`end`, function() {})
       res.on(`error`, function(err) {
         console.log(err)
       })
