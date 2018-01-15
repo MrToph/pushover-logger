@@ -1,0 +1,25 @@
+{
+  "name": "pushover-logger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "test",
+    "build": "npx babel src --out-dir lib",
+    "prepublish": "npm run build",
+    "start": ""
+  },
+  "author": "Christoph Michel",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-eslint": "^8.0.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.11.0",
+    "eslint-plugin-react": "^7.5.1",
+    "prettier": "^1.8.2"
+  },
+  "dependencies": {
+  }
+}
