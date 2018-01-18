@@ -52,7 +52,7 @@ class PushoverLogger {
       )
     }
 
-    if(this.debug) {
+    if (this.debug) {
       console.log(message)
       return
     }
@@ -61,25 +61,32 @@ class PushoverLogger {
       Object.assign({ message }, otherLogOptions, this.generalPostData)
     )
     const httpOptions = this.getPostOptions(stringifiedPostData)
-    const req = https.request(httpOptions, function(res) {
-      let result = ``
-      res.on(`data`, function(chunk) {
-        result += chunk
+
+    return new Promise((resolve, reject) => {
+      const req = https.request(httpOptions, function(res) {
+        let result = ``
+        res.on(`data`, function(chunk) {
+          result += chunk
+        })
+        res.on(`end`, function() {
+          resolve(result)
+        })
+        res.on(`error`, function(err) {
+          console.log(err)
+          reject(err)
+        })
       })
-      res.on(`end`, function() {})
-      res.on(`error`, function(err) {
+
+      // req error
+      req.on(`error`, function(err) {
         console.log(err)
+        reject(err)
       })
-    })
 
-    // req error
-    req.on(`error`, function(err) {
-      console.log(err)
+      //send request with the postData form
+      req.write(stringifiedPostData)
+      req.end()
     })
-
-    //send request with the postData form
-    req.write(stringifiedPostData)
-    req.end()
   }
 }
 
